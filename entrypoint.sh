@@ -5,6 +5,7 @@ PUID=${PUID:-1000}
 PGID=${PGID:-1000}
 USER_NAME="appuser"
 USER_HOME="/home/${USER_NAME}"
+COMFY="/comfyui"
 
 # Create a group and user with the specified PUID and PGID
 if ! getent group ${PGID} >/dev/null; then
@@ -24,5 +25,4 @@ export PUID PGID
 git config --global --add safe.directory ${COMFY}
 
 # Run the app
-echo "Running ComfyUI..."
 exec /workspace/run_comfy.sh
