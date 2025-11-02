@@ -6,6 +6,7 @@ USER_NAME="appuser"
 USER_HOME="/home/${USER_NAME}"
 COMFY="/comfyui"
 COMFY_GIT="https://github.com/comfyanonymous/ComfyUI.git"
+C_M_GIT="https://github.com/ltdrdata/ComfyUI-Manager.git"
 
 # 檢查新的環境變數 COMFY_MODE，預設為 'single' (單人)
 COMFY_MODE=${COMFY_MODE:-single}
@@ -17,6 +18,14 @@ if [ -f "${COMFY}/main.py" ]; then
 else
   echo "ComfyUI not found, installing..."
   git clone ${COMFY_GIT} ${COMFY}
+fi
+
+# Check if ComfyUI-Manager is installed
+if [ -d "${COMFY}/custom_nodes/ComfyUI-Manager" ]; then
+  echo "ComfyUI-Manager is already installed."
+else
+  git clone ${C_M_GIT} ${COMFY}/custom_nodes/ComfyUI-Manager
+  echo "ComfyUI-Manager installed successfully."
 fi
 
 # Single or Multi user
