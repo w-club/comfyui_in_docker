@@ -6,11 +6,15 @@ WORKDIR /workspace
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     wget https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt && \
+    wget https://raw.githubusercontent.com/Comfy-Org/ComfyUI-Manager/main/requirements.txt -O manager_requirements.txt && \
+    pip install -r manager_requirements.txt
 
+# 複製並設定 entrypoint 腳本
 COPY entrypoint.sh /workspace/entrypoint.sh
 RUN chmod u+x /workspace/entrypoint.sh
 
+# 複製 run_comfy.sh 啟動腳本
 COPY run_comfy.sh /workspace/run_comfy.sh
 RUN chmod u+x /workspace/run_comfy.sh
 
