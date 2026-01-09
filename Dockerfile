@@ -6,9 +6,9 @@ RUN apt-get update && apt-get install -y git wget gosu libgl1 libglib2.0-0 build
 WORKDIR /workspace
 
 RUN --mount=type=cache,target=/root/.cache/pip \
-    wget https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt && \
+    wget https://raw.githubusercontent.com/Comfy-Org/ComfyUI/refs/heads/master/requirements.txt && \
     pip install -r requirements.txt && \
-    wget https://raw.githubusercontent.com/Comfy-Org/ComfyUI-Manager/main/requirements.txt -O manager_requirements.txt && \
+    wget https://raw.githubusercontent.com/Comfy-Org/ComfyUI-Manager/refs/heads/main/requirements.txt -O manager_requirements.txt && \
     pip install -r manager_requirements.txt && \
     wget https://raw.githubusercontent.com/Fannovel16/comfyui_controlnet_aux/main/requirements.txt -O controlnet_aux_reqs.txt && \
     pip install -r controlnet_aux_reqs.txt && \
@@ -22,6 +22,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r mon_reqs.txt && \
     wget https://raw.githubusercontent.com/nicofdga/DZ-FaceDetailer/refs/heads/main/requirements.txt -O detailer_reqs.txt && \
     pip install -r detailer_reqs.txt && \
+    wget https://raw.githubusercontent.com/yolain/ComfyUI-Easy-Use/refs/heads/main/requirements.txt -O easy_use_reqs.txt && \
+    pip install -r easy_use_reqs.txt && \
     pip install flask-restx py-cord[voice] browser-use && \
     pip install torchcodec && \
     pip install onnxruntime-gpu
